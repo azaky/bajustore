@@ -15,6 +15,13 @@ Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
 
+Route::get('admin', 'AdminController@login');
+
+Route::get('admin/dashboard', [
+	// 'before' => 'auth',
+	'uses' => 'AdminController@index'
+]);
+
 Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
