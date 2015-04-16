@@ -77,17 +77,14 @@
                         </li>
                     </ul>
                 </div>
-                <div class="footerEmail">
-                    <form name="newsletter" action="https://www.braunbuffel.com.au/newsletters.php" method="post" onsubmit="return verify(this);"><input type="hidden" name="action" value="quick_process"><input type="hidden" name="origin" value="http://www.braunbuffel.com.au/index.php?currency=USD&amp;locale=US"><label>Daftar untuk berita</label><input class="field" type="text" name="email_address"><span class="buttons"><button type="submit" class="dark small "><span class="ui-text">ikut</span></button></span></form><!-- subscribers_eof //-->
-                </div>
                 <div class="footerStore">
-                    <div class="footerSocialLabel">Kunjungi kita di Bajustore</div>
-                    <p>Ground Floor Shop G7, 234 Collins St<br>
-                        Melbourne VIC 3000<br>
-                        Tel: + 61 (03) 9078 0079</p>
+                    <div class="footerSocialLabel">Kunjungi kami di Bajustore</div>
+                    <p>Jalan Ir. H. Djuanda no. 113<br>
+                        Bandung, 40135<br>
+                        Tel: +62 838 2110 2216 (Andes Sagita)</p>
                 </div>
                 <div class="clearer"></div>
-                <div class="footerText">Copyright © 2006-2015 Bajustore. All Rights Reserved.</div>
+                <div class="footerText">Copyright © 2015 Bajustore. All Rights Reserved.</div>
             </div>
             <script>
                 (function($) {

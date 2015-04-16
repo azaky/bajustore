@@ -18,6 +18,7 @@ Route::get('/item', function() {
 });
 
 Route::get('/item/{id}', 'MainController@item');
+Route::get('/collections/{id}', 'MainController@collections');
 
 Route::get('/category', function() {
     return view('guest.category');

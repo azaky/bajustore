@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
 use App\Category;
+use App\User;
 
 class DatabaseSeeder extends Seeder {
 
@@ -15,11 +16,10 @@ class DatabaseSeeder extends Seeder {
 	{
 		Model::unguard();
 
-		// $this->call('UserTableSeeder');
+		 $this->call('UserTableSeeder');
         $this->call('CategoryTableSeeder');
         $this->call('ProductTableSeeder');
 	}
-
 }
 
 class CategoryTableSeeder extends Seeder {
@@ -47,5 +47,14 @@ class CategoryTableSeeder extends Seeder {
 class ProductTableSeeder extends Seeder {
     public function run() {
 
+    }
+}
+
+class UserTableSeeder extends Seeder {
+    public function run() {
+        User::create([
+            'email' => 'a_zaky003@yahoo.com',
+            'password' => bcrypt('password')
+        ]);
     }
 }
