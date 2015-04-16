@@ -16,7 +16,7 @@ class Category extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['*'];
+	protected $fillable = ['name', 'description', 'photo_extension'];
 
     public function parent() {
         return $this->belongsTo('App\Category', 'parent_id', 'id');

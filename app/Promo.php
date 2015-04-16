@@ -16,7 +16,7 @@ class Promo extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['name', 'description', 'valid_until'];
+	protected $fillable = ['name', 'description', 'photo_extension', 'valid_until'];
 
 	/**
 	 * The attributes excluded from the model's JSON form.

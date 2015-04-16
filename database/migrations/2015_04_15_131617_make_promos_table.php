@@ -19,7 +19,8 @@ class MakePromosTable extends Migration {
 
             $table->string('name', 255);
             $table->text('description');
-            $table->dateTime('valid_until');
+            $table->string('photo_extension', 10);
+            $table->date('valid_until');
 		});
 	}
 
