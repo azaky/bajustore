@@ -4,6 +4,7 @@ use Request;
 use Redirect;
 use Validator;
 use Auth;
+use File;
 
 use App\Product;
 use App\Category;
@@ -65,13 +66,13 @@ class AdminController extends Controller {
 			return redirect('admin');
 	}
 
-	public function showAddItem()
+	public function showAddProduct()
 	{
-		return view('admin.add-item')
+		return view('admin.add-product')
 			->with('categories', Category::all());
 	}
 
-	public function addItem()
+	public function addProduct()
 	{
 		$validation = Validator::make(Request::all(), [
 			"image" => "required",
@@ -79,30 +80,30 @@ class AdminController extends Controller {
 			"description" => "required",
 			"category_id" => "required"
 		]);
-		// echo Request::get('category_id');
 		if ($validation->passes()) {
 			$product = Product::create([
 					'name' => Request::get('name'),
 					'description' => Request::get('description'),
+					'photo_extension' => Request::file('image')->getClientOriginalExtension(),
 					'category_id' => Request::get('category_id'),
 				]);
 			Request::file('image')->move(public_path().'/product/', $product->id.'.'.Request::file('image')->getClientOriginalExtension());
 			return redirect('admin/dashboard#product');
 		}
-		else;
-			return redirect('admin/add-item')
+		else
+			return redirect('admin/add-product')
 				->withErrors($validation);
 	}
 
-	public function showEditItem($id)
+	public function showEditProduct($id)
 	{
 		$product = Product::find($id);
-		return view('admin.edit-item')
+		return view('admin.edit-product')
 			->with('product', Product::find($id))
 			->with('categories', Category::all());
 	}
 
-	public function editItem($id)
+	public function editProduct($id)
 	{
 		$validation = Validator::make(Request::all(), [
 			"name" => "required",
@@ -113,22 +114,25 @@ class AdminController extends Controller {
 			$product = Product::find($id);
 			$product->name = Request::get('name');
 			$product->description = Request::get('description');
+			$product->photo_extension = Request::file('image')->getClientOriginalExtension();
 			$product->category_id = Request::get('category_id');
-			Request::file('image')->move(public_path().'/product/', $product->id.'.'.Request::file('image')->getMimeType());
 			$product->save();
+			Request::file('image')->move(public_path().'/product/', $product->id.'.'.Request::file('image')->getClientOriginalExtension());
 			return redirect('admin/dashboard#product');
 		}
 		else {
-			return redirect('admin/edit-item/'.$id)
+			return redirect('admin/edit-product/'.$id)
 				->withErrors($validation);
-		}
+		}	
 	}
 
-	public function deleteItem($id)
+	public function deleteProduct($id)
 	{
 		$product = Product::find($id);
-		if ($product !== null)
+		if ($product !== null) {
+			File::delete(public_path().'/product/'.$product->id.'.'.$product->photo_extension);
 			$product->delete();
+		}
 		return redirect('admin/dashboard#product');
 	}
 
@@ -150,9 +154,10 @@ class AdminController extends Controller {
 			$promo = Promo::create([
 					'name' => Request::get('name'),
 					'description' => Request::get('description'),
+					'photo_extension' => Request::file('image')->getClientOriginalExtension(),
 					'valid_until' => Request::get('valid_until'),
 				]);
-			Request::file('image')->move(public_path().'/promo/', $promo->id);
+			Request::file('image')->move(public_path().'/promo/', $promo->id.'.'.Request::file('image')->getClientOriginalExtension());
 			return redirect('admin/dashboard#promo');
 		}
 		else {
@@ -180,10 +185,11 @@ class AdminController extends Controller {
 			$promo = Promo::find($id);
 			$promo->name = Request::get('name');
 			$promo->description = Request::get('description');
+			$promo->photo_extension = Request::file('image')->getClientOriginalExtension();
 			$promo->valid_until = Request::get('valid_until');
 			$promo->save();
 
-			Request::file('image')->move(public_path().'/promo/', $promo->id);
+			Request::file('image')->move(public_path().'/promo/', $promo->id.'.'.Request::file('image')->getClientOriginalExtension());
 
 			return redirect('admin/dashboard#promo');
 		}
@@ -196,8 +202,10 @@ class AdminController extends Controller {
 	public function deletePromo($id)
 	{
 		$promo = Promo::find($id);
-		if ($promo !== null)
+		if ($promo !== null) {
+			File::delete(public_path().'/promo/'.$promo->id.'.'.$promo->photo_extension);
 			$promo->delete();
+		}
 		return redirect('admin/dashboard#promo');
 	}
 }

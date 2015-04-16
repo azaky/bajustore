@@ -33,8 +33,8 @@ Route::get('home', 'HomeController@index');
 Route::get('admin', 'AdminController@showLogin');
 Route::post('admin', 'AdminController@login');
 
-Route::get('admin/add-item', 'AdminController@showAddItem');
-Route::post('admin/add-item', 'AdminController@addItem');
+Route::get('admin/add-product', 'AdminController@showAddProduct');
+Route::post('admin/add-product', 'AdminController@addProduct');
 
 Route::get('admin/add-promo', 'AdminController@showAddPromo');
 Route::post('admin/add-promo', 'AdminController@addPromo');
@@ -42,9 +42,9 @@ Route::get('admin/edit-promo/{id}', 'AdminController@showEditPromo');
 Route::post('admin/edit-promo/{id}', 'AdminController@editPromo');
 Route::get('admin/delete-promo/{id}', 'AdminController@deletePromo');
 
-Route::get('admin/edit-item/{id}', 'AdminController@showEditItem');
-Route::post('admin/edit-item/{id}', 'AdminController@editItem');
-Route::get('admin/delete-item/{id}', 'AdminController@deleteItem');
+Route::get('admin/edit-product/{id}', 'AdminController@showEditProduct');
+Route::post('admin/edit-product/{id}', 'AdminController@editProduct');
+Route::get('admin/delete-product/{id}', 'AdminController@deleteProduct');
 
 Route::get('admin/dashboard', 'AdminController@index');
 

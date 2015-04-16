@@ -19,7 +19,7 @@ class MakeProductsTable extends Migration {
 
             $table->string('name', 60);
             $table->text('description');
-            $table->text('photo_link');
+            $table->string('photo_extension', 10);
             $table->integer('category_id')->unsigned();
 
             $table->foreign('category_id')->references('id')->on('categories')

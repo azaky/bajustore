@@ -12,7 +12,7 @@
             <header>
                 <h2>Pembaharuan Produk</h2>
             </header>
-            <form action="../edit-item/{{ $product->id }}" method="post" enctype="multipart/form-data">
+            <form action="../edit-product/{{ $product->id }}" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="row">
                     <div class="4u">

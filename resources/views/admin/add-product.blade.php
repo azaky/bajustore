@@ -12,7 +12,7 @@
             <header>
                 <h2>Penambahan Produk</h2>
             </header>
-            <form action="add-item" method="post" enctype="multipart/form-data">
+            <form action="add-product" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="row">
                     <div class="4u">

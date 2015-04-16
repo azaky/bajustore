@@ -43,7 +43,7 @@
 		<!-- Work --> 
 			<article id="product" class="panel">
 				<header>
-					<h2>Daftar Produk Barang<a href="add-item" class="icon fa-plus"><span></span></a></h2>
+					<h2>Daftar Produk Barang<a href="add-product" class="icon fa-plus"><span></span></a></h2>
 				</header>
                 <table>
                     <thead>
@@ -59,8 +59,8 @@
                             <td>{{ $product->name }}</td>
                             <td>{{ $product->description }}</td>
                             <td>
-                                <a href="edit-item/{{ $product->id }}"><span class="fa fa-edit"></span></a>
-                                <a href="delete-item/{{ $product->id }}"><span class="fa fa-remove"></span></a>
+                                <a href="edit-product/{{ $product->id }}"><span class="fa fa-edit"></span></a>
+                                <a href="delete-product/{{ $product->id }}"><span class="fa fa-remove"></span></a>
                             </td>
                         </tr>
                         @endforeach
