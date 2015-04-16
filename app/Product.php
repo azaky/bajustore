@@ -29,4 +29,9 @@ class Product extends Model {
 	 */
 	protected $hidden = [];
 
+    public static function random() {
+        $all = Product::all();
+        
+    }
+
 }
