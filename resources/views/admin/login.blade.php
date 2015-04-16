@@ -15,11 +15,12 @@
 					<h1>BajuStore</h1>
 					<p>Halaman Masuk</p>
 				</header>
-                <form action="#" method="post">
+                <form action="admin" method="post">
+                	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 					<div>
 						<div class="row">
 							<div class="4u">
-								<input type="text" name="username" placeholder="Username" />
+								<input type="text" name="email" placeholder="Email" />
 							</div>
 						</div>
                         <div class="row">

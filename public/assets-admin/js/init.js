@@ -25,7 +25,9 @@
 				sizeMin: 15,			
 			
 			// Maximum point size.
-				sizeMax: 20			
+				sizeMax: 20,
+
+				absURL: '//localhost/bajustore/public/'			
 
 		};
 
@@ -37,9 +39,9 @@
 			reset: 'full',
 			pollOnce: true,
 			breakpoints: {
-				'global':	{ range: '*', href: 'assets-admin/css/style.css' },
-				'desktop':	{ range: '737-', href: 'assets-admin/css/style-desktop.css', containers: 1200, grid: { gutters: 25 }, viewport: { width: 1080, scalable: false } },
-				'mobile':	{ range: '-736', href: 'assets-admin/css/style-mobile.css', containers: '100%!', grid: { collapse: true, gutters: 15 }, viewport: { scalable: false } }
+				'global':	{ range: '*', href: settings.absURL+'assets-admin/css/style.css' },
+				'desktop':	{ range: '737-', href: settings.absURL+'assets-admin/css/style-desktop.css', containers: 1200, grid: { gutters: 25 }, viewport: { width: 1080, scalable: false } },
+				'mobile':	{ range: '-736', href: settings.absURL+'assets-admin/css/style-mobile.css', containers: '100%!', grid: { collapse: true, gutters: 15 }, viewport: { scalable: false } }
 			}
 		});
 

@@ -4,7 +4,7 @@
 <!-- Nav -->
 	<nav id="nav">
 		<a href="#promo" class="icon fa-desktop active"><span>Promo</span></a>
-		<a href="#work" class="icon fa-list"><span>Produk</span></a>
+		<a href="#product" class="icon fa-list"><span>Produk</span></a>
 	</nav>
 
 <!-- Main -->
@@ -13,57 +13,57 @@
 		<!-- Me -->
 			<article id="promo" class="panel">
 				<header>
-					<h2>Promo</h2>
-				</header>
-                <form>
-                    <div class="row">
-                        <div class="6u">
-                            <input type="file">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="6u">
-                            <input type="text" name="name" placeholder="Nama" />
-                        </div>
-                        <div class="6u">
-                            <input type="date" name="valid date" placeholder="Akhir Tanggal Promo">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="12u">
-                            <textarea placeholder="Deskripsi"></textarea>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="12u">
-                            <input type="submit" value="Perbaharui">
-                        </div>
-                    </div>
-                </form>
-			</article>
-
-		<!-- Work --> 
-			<article id="produk" class="panel">
-				<header>
-					<h2>Daftar Produk Barang</h2>
+					<h2>Daftar Promo<a href="add-promo" class="icon fa-plus"><span></span></a></h2>
 				</header>
                 <table>
                     <thead>
                         <tr>
-                            <th>Nama</th>
+                            <th>Nama Promo</th>
+                            <th>Deskripsi</th>
+                            <th>Akhir Berlaku</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($promos as $promo)
+                        <tr>
+                            <td>{{ $promo->name }}</td>
+                            <td>{{ $promo->description }}</td>
+                            <td>{{ $promo->valid_until }}</td>
+                            <td>
+                                <a href="edit-promo/{{ $promo->id }}"><span class="fa fa-edit"></span></a>
+                                <a href="delete-promo/{{ $promo->id }}"><span class="fa fa-remove"></span></a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+			</article>
+
+		<!-- Work --> 
+			<article id="product" class="panel">
+				<header>
+					<h2>Daftar Produk Barang<a href="add-item" class="icon fa-plus"><span></span></a></h2>
+				</header>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nama Produk</th>
                             <th>Deskripsi</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
+                        @foreach ($products as $product)
                         <tr>
-                            <td>Item 1</td>
-                            <td>Ante turpis integer aliquet porttitor.</td>
+                            <td>{{ $product->name }}</td>
+                            <td>{{ $product->description }}</td>
                             <td>
-                                <a href="#promo"><span class="fa fa-edit"></span></a>
-                                <a href="#promo"><span class="fa fa-remove"></span></a>
+                                <a href="edit-item/{{ $product->id }}"><span class="fa fa-edit"></span></a>
+                                <a href="delete-item/{{ $product->id }}"><span class="fa fa-remove"></span></a>
                             </td>
                         </tr>
+                        @endforeach
                     </tbody>
                 </table>
 			</article>

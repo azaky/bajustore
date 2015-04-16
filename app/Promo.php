@@ -2,25 +2,21 @@
 
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model {
+class Promo extends Model {
 
 	/**
 	 * The database table used by the model.
 	 *
 	 * @var string
 	 */
-	protected $table = 'products';
+	protected $table = 'promos';
 
 	/**
 	 * The attributes that are mass assignable.
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['*'];
-
-    public function category() {
-        return $this->belongsTo('App\Category', 'category_id', 'id');
-    }
+	protected $fillable = ['name', 'description', 'valid_until'];
 
 	/**
 	 * The attributes excluded from the model's JSON form.

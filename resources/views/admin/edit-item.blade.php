@@ -10,9 +10,9 @@
 	<div id="main">
         <article id="promo" class="panel">
             <header>
-                <h2>Penambahan Produk</h2>
+                <h2>Pembaharuan Produk</h2>
             </header>
-            <form action="add-item" method="post" enctype="multipart/form-data">
+            <form action="../edit-item/{{ $product->id }}" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="row">
                     <div class="4u">
@@ -23,14 +23,14 @@
                 <div class="row">
                     <div class="4u">
                         {{ $errors->first("name") }}
-                        <input type="text" name="name" placeholder="Nama" />
+                        <input type="text" name="name" placeholder="Nama" value="{{ $product->name }}"/>
                     </div>
                     <div class="4u">
                         {{ $errors->first("category_id") }}
                         <select name="category_id">
-                            <option disabled selected>Kategori</option>
+                            <option disabled>Kategori</option>
                             @foreach ($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                <option value="{{ $category->id }}" @if ($product->category_id == $category->id) selected @endif >{{ $category->name }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -38,12 +38,12 @@
                 <div class="row">
                     <div class="12u">
                         {{ $errors->first("description") }}
-                        <textarea name="description" placeholder="Deskripsi"></textarea>
+                        <textarea name="description" placeholder="Deskripsi">{{ $product->description }}</textarea>
                     </div>
                 </div>
                 <div class="row">
                     <div class="12u">
-                        <input type="submit" value="Tambah">
+                        <input type="submit" value="Perbaharui">
                     </div>
                 </div>
             </form>

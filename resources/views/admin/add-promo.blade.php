@@ -10,9 +10,9 @@
 	<div id="main">
         <article id="promo" class="panel">
             <header>
-                <h2>Penambahan Produk</h2>
+                <h2>Penambahan Promo</h2>
             </header>
-            <form action="add-item" method="post" enctype="multipart/form-data">
+            <form action="add-promo" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="row">
                     <div class="4u">
@@ -21,23 +21,15 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="4u">
-                        {{ $errors->first("name") }}
+                    <div class="6u">
                         <input type="text" name="name" placeholder="Nama" />
                     </div>
-                    <div class="4u">
-                        {{ $errors->first("category_id") }}
-                        <select name="category_id">
-                            <option disabled selected>Kategori</option>
-                            @foreach ($categories as $category)
-                                <option value="{{ $category->id }}">{{ $category->name }}</option>
-                            @endforeach
-                        </select>
+                    <div class="6u">
+                        <input type="date" name="valid_until" placeholder="Akhir Tanggal Promo">
                     </div>
                 </div>
                 <div class="row">
                     <div class="12u">
-                        {{ $errors->first("description") }}
                         <textarea name="description" placeholder="Deskripsi"></textarea>
                     </div>
                 </div>

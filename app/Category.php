@@ -30,4 +30,11 @@ class Category extends Model {
         return $this->hasMany('App\Product');
     }
 
+	/**
+	 * The attributes excluded from the model's JSON form.
+	 *
+	 * @var array
+	 */
+	protected $hidden = [];
+
 }
