@@ -11,7 +11,21 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', 'MainController@index');
+
+Route::get('/item', function() {
+    return view('guest.item');
+});
+
+Route::get('/item/{id}', 'MainController@item');
+
+Route::get('/category', function() {
+    return view('guest.category');
+});
+
+Route::get('/item-collections', function() {
+    return view('guest.item-collections');
+});
 
 Route::get('home', 'HomeController@index');
 

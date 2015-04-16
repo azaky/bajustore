@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
+use App\Category;
 
 class DatabaseSeeder extends Seeder {
 
@@ -15,6 +16,36 @@ class DatabaseSeeder extends Seeder {
 		Model::unguard();
 
 		// $this->call('UserTableSeeder');
+        $this->call('CategoryTableSeeder');
+        $this->call('ProductTableSeeder');
 	}
 
+}
+
+class CategoryTableSeeder extends Seeder {
+
+    public function run() {
+        $men = Category::create([
+            'name' => 'pria',
+            'parent_id' => null
+        ]);
+        $women = Category::create([
+            'name' => 'wanita',
+            'parent_id' => null
+        ]);
+        Category::create([
+            'name' => 'Jas Pria',
+            'parent_id' => $men->id
+        ]);
+        Category::create([
+            'name' => 'Dress Wanita',
+            'parent_id' => $women->id
+        ]);
+    }
+}
+
+class ProductTableSeeder extends Seeder {
+    public function run() {
+
+    }
 }

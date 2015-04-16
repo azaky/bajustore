@@ -18,12 +18,12 @@ class MakeCategoriesTable extends Migration {
 			$table->timestamps();
 
             $table->string('name', 255);
-            $table->integer('id_parent')->unsigned()->nullable();
+            $table->integer('parent_id')->unsigned()->nullable();
 		});
 
         Schema::table('categories', function($table)
         {
-            $table->foreign('id_parent')->references('id')->on('categories')
+            $table->foreign('parent_id')->references('id')->on('categories')
                 ->onDelete('CASCADE')->onUpdate('CASCADE');
         });
 	}
