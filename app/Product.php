@@ -29,9 +29,22 @@ class Product extends Model {
 	 */
 	protected $hidden = [];
 
-    public static function random() {
-        $all = Product::all();
-        
+    public static function randomProducts($id = null) {
+        $all = [];
+        if ($id == null) {
+            $all = Product::all();
+        } else {
+            $all = Product::where('id', '!=', $id)->get();
+        }
+
+        $all_sliced = [];
+        for ($i = 0; $i < count($all); ++$i) {
+            array_push($all_sliced, $all[$i]);
+        }
+        shuffle($all_sliced);
+        $all_sliced = array_slice($all_sliced, 0, 3);
+
+        return $all_sliced;
     }
 
 }

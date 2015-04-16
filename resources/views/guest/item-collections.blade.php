@@ -1,22 +1,5 @@
 @extends('guest-layout')
 
-@section('header-nav')
-    <div class="headerNav">
-        <ul>
-            <li><a href="http://www.braunbuffel.com.au/women-new-arrivals-fc-1035_1216.html">Terbaru</a></li>
-            <li><a href="http://www.braunbuffel.com.au/women-customer-favourites-fc-1035_1274.html">Favorit</a></li>
-            <li><a href="http://www.braunbuffel.com.au/feature.php?ftr=10001">Hadiah</a></li>
-            <li><a class="menu" href="http://www.braunbuffel.com.au/women-handbags-fc-1035_1043.html">Tas Wanita</a>
-            </li>
-            <li><a href="http://www.braunbuffel.com.au/women-wallets-fc-1035_1045.html">Dompet</a></li>
-            <li><a href="http://www.braunbuffel.com.au/women-accessories-fc-1035_1047.html">Aksesoris</a></li>
-            <li><a href="http://www.braunbuffel.com.au/sale-women-accessories-iphoneipad-cases-fc-1035_1047_1073.html">Pelindung
-                    iPhone/iPad</a></li>
-            <li><a href="http://www.braunbuffel.com.au/women-travel-fc-1035_1048.html">Travel</a></li>
-        </ul>
-    </div>
-@endsection
-
 @section('content')
     <div class="bodyContainer">
         <div class="bodyContainerWrapper">
@@ -24,7 +7,6 @@
         <div class="contentContainer">
             <div class="contentBreadcrumbs">
                 <div style="float:left">
-                    {{--<a href="{{ url('/') }}"></a>&nbsp;&nbsp;--}}
                     <a href="{{ url('/') }}" class="headerNavigation">Home</a>
                     @foreach ($breadcrumb as $page)
                         &nbsp;/&nbsp; <a href="{{ url('collections/' . $page->id) }}"
@@ -69,13 +51,13 @@
                                 <div class="cssproduct_listing_item_3col cssproduct_listing_item_3col_extended">
                                     <div class="cssproduct_listing_item_image cssproduct_listing_content">
                                         <a href="{{ url('item/' . $product->id) }}">
-                                            <img src="{{ asset($product->photo_link) }}" border="0"
-                                                 alt="{{ $product->name }}" title=" Flapy Sling Bag " width="240"
-                                                 height="240">
+                                            <img src="{{ asset('product/' . $product->id . '.' . $product->photo_extension) }}"
+                                                 border="0" alt="{{ $product->name }}" title=" Flapy Sling Bag "
+                                                 width="240" height="240">
                                             <span class="thumbnailhover"
-                                                  style="display:none;">{{ asset($product->photo_link) }}</span>
+                                                  style="display:none;">{{ asset('product/' . $product->id . '.' . $product->photo_extension) }}</span>
                                             <span class="thumbnailorig"
-                                                  style="display:none;">{{ asset($product->photo_link) }}</span>
+                                                  style="display:none;">{{ asset('product/' . $product->id . '.' . $product->photo_extension) }}</span>
                                         </a>
                                     </div>
                                     <div class="cssproduct_listing_content">

@@ -2,11 +2,8 @@
 <!-- saved from url=(0053)http://www.braunbuffel.com.au/?locale=US&currency=USD -->
 <html>
     <head>
-        <title>Braun Buffel | Handbags &amp; Accessories | Home</title>
+        <title>Bajustore</title>
         <!--<base href="http://www.braunbuffel.com.au/">--><base href=".">
-        <meta name="description" content="Bajustore is a premium German designer and producer of top quality leather goods and accessories, offering shoes, handbags, purses, travel and business cases for both men and women.">
-        <meta name="keywords" content="handbags, wallets, purses, bags, leather">
-        <meta property="og:description" content="Bajustore is a premium German designer and producer of top quality leather goods and accessories, offering shoes, handbags, purses, travel and business cases for both men and women.">
         <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open+Sans">
         <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets-guest/css/stylesheet.css') }}" media="screen">
         <link rel="stylesheet" type="text/css" href="{{ URL::asset('assets-guest/css/print.css') }}" media="print">
@@ -50,29 +47,42 @@
             <div class="mainContainer">
                 <div class="headerContainer">
                     <div class="headerLogo">
-                        <a class="logo" href="http://www.braunbuffel.com.au/" title="Braun Buffel Australia">&nbsp;</a>
+                        <a class="logo" href="{{ url('/') }}" title="Bajustore Bandung">&nbsp;</a>
                     </div>
-                    @yield('header-nav')
-                    <div class="headerAccount">
+
+                    {{--@yield('header-nav')--}}
+                    <div class="headerNav">
                         <ul>
-                            <li><a href="http://www.braunbuffel.com.au/feature.php?ftr=10001">Wanita</a></li>
-                            <li><a href="http://www.braunbuffel.com.au/feature.php?ftr=10002">Pria</a></li>
-                            <li><a href="http://www.braunbuffel.com.au/about-braun-buffel-i-8.html">Tentang Kita</a></li>
-                            <div class="clearer"></div>
+                            @if (isset($top))
+                                @foreach ($top as $cat)
+                                    <li><a href="{{ url('collections/' . $cat->id) }}">{{ $cat->name }}</a></li>
+                                @endforeach
+                            @endif
                         </ul>
                     </div>
+
+                    {{--<div class="headerAccount">--}}
+                        {{--<ul>--}}
+                            {{--<li><a href="http://www.braunbuffel.com.au/feature.php?ftr=10001">Wanita</a></li>--}}
+                            {{--<li><a href="http://www.braunbuffel.com.au/feature.php?ftr=10002">Pria</a></li>--}}
+                            {{--<li><a href="http://www.braunbuffel.com.au/about-braun-buffel-i-8.html">Tentang Kita</a></li>--}}
+                            {{--<div class="clearer"></div>--}}
+                        {{--</ul>--}}
+                    {{--</div>--}}
                 </div>
+
                 @yield('content')
+
             </div>
         </div>
         <div class="bottomBar">
             <div class="footerContainer">
                 <div class="footerNav">
                     <ul class="menuList1">
-                        <li><a href="http://www.braunbuffel.com.au/customer-service-i-1.html">Customer Service</a>
+                        <li><a href="#">Customer Service</a>
                             <ul class="menuList2">
-                                <li><a href="http://www.braunbuffel.com.au/return-policy-i-1_6.html">Pengembalian</a></li>
-                                <li><a href="http://www.braunbuffel.com.au/privacy-policy-i-1_7.html">Kebijakan Privasi</a></li>
+                                <li><a href="#">Pengembalian</a></li>
+                                <li><a href="#">Kebijakan Privasi</a></li>
                             </ul>
                         </li>
                     </ul>

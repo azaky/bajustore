@@ -37,4 +37,8 @@ class Category extends Model {
 	 */
 	protected $hidden = [];
 
+    public static function top() {
+        return Category::where('parent_id', '=', null)->get();
+    }
+
 }

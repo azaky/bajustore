@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder {
 	{
 		Model::unguard();
 
-		 $this->call('UserTableSeeder');
+		$this->call('UserTableSeeder');
         $this->call('CategoryTableSeeder');
         $this->call('ProductTableSeeder');
 	}
@@ -25,22 +25,26 @@ class DatabaseSeeder extends Seeder {
 class CategoryTableSeeder extends Seeder {
 
     public function run() {
-        $men = Category::create([
-            'name' => 'pria',
-            'parent_id' => null
-        ]);
-        $women = Category::create([
-            'name' => 'wanita',
-            'parent_id' => null
-        ]);
-        Category::create([
-            'name' => 'Jas Pria',
-            'parent_id' => $men->id
-        ]);
-        Category::create([
-            'name' => 'Dress Wanita',
-            'parent_id' => $women->id
-        ]);
+//        Category::truncate();
+
+        $all = [
+            'Clothes' => ['Swimwear', 'Dresses', 'Tops', 'Bottoms', 'Skirts', 'Jumpsuits + Rompers', 'Sweaters + Cardigans', 'Jackets + Coats', 'Activewear'],
+            'Shoes' => ['Sandals', 'Heels', 'Platforms', 'Wedges', 'Flats', 'Sneakers', 'Boots', 'Booties', 'Gladiators'],
+            'Accessories' => ['Earrings', 'Necklaces', 'Bracelets', 'Rings', 'Body Jewelry', 'Watches', 'Handbags + Wallets', 'Hats + Headwear', 'Sunglasses', 'Belts', 'Scarves', 'Legwear', 'Gift Items', 'Gift Cards']
+        ];
+
+        foreach ($all as $key => $value) {
+            $category = Category::create([
+                'name' => $key,
+                'parent_id' => null
+            ]);
+            foreach ($value as $sub) {
+                Category::create([
+                    'name' => $sub,
+                    'parent_id' => $category->id
+                ]);
+            }
+        }
     }
 }
 
@@ -51,7 +55,10 @@ class ProductTableSeeder extends Seeder {
 }
 
 class UserTableSeeder extends Seeder {
+
     public function run() {
+        User::truncate();
+
         User::create([
             'email' => 'a_zaky003@yahoo.com',
             'password' => bcrypt('password')
